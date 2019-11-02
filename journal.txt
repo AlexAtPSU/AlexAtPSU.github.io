@@ -1,0 +1,17 @@
+Took a small example of my week 2 portfolio and started from there
+
+attempted to add a bootstrap for a sidebar
+too much code made it look cluttered and didnt work good
+
+already had a sidebar so i decided to use javascript to make it turn invisable with a button
+
+using jquery i was able to make the sidebar hidden
+it wont go back to visible though
+
+remade the sidebar to look nicer. added hover changes to links
+
+remade jquery function to toggle class to be two classes, one with hidden visibility
+
+to the sidebar, fadein was added using css by animation. 
+
+removed the margin on main section when sidebar is toggled

@@ -1,95 +1,75 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css">
-		body {
-			height: 300px;
-			overflow: hidden;
-		}
-		#leftbar {
-			float: left;
-			background: lightblue;
-			margin-right: 30px;
-			margin-left: -10px;
-			margin-top: -10px;
-			padding: 5px;
-			padding-bottom: 100%;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type = "text/javascript" src = "homepage.js" ></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
 
-		}
-		#me {
-			font-size:10px;
-		}
-		#foot {
-			bottom:-200px;
-			width: 100%;
-			position: fixed;
-			margin-left: -10px;
-			padding:10px;
-			background: black;
-			color: white;
-			float: bottom;
-		}
-		#filler{
-		}
-		h1 {
-			font-size: 40px;
-		}
-		iframe {
-			width: 300px;
-			height: 355px;
-			position: absolute;
-			top: 32%;
-			left: 37%;
-		}
-	</style>
-	<script type="text/javascript">
-		var formis = false;
+.sidebar {
+  animation:opac 0.8s;
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #6D9EEB;
+  overflow-x: hidden;
+  padding-top: 20px;
+}@keyframes opac{from{opacity:0} to{opacity:1}}
 
-		function loadform(){
-			if (!formis) {
-				formis = true;
-				fill = document.getElementById('filler');
-				newelem = document.createElement('iframe');
-				newelem.src = "exercise1.html";
-				newelem.style = "background-image: url('https://thailand.nenpi1.info/wp-content/uploads/2015/02/0310c694.jpg');";
-				fill.appendChild(newelem);
-			}
-		}
-	</script>
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #111;
+}
+
+.main {
+  margin-left: 160px; 
+  font-size: 28px; 
+  padding: 0px 10px;
+}
+
+.nomarg {
+	margin: 0px;
+}
+
+.hiding {
+	visibility: hidden;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
 </head>
 <body>
-	<section id="leftbar">
-		<span>List of stuff</span>
-		<table>
-			<ol>
-				<li>
-					<a href="">This</a>
-				</li>
-				<li>
-					<a href="">That</a>
-				</li>
-				<li>
-					<input type="button" name="form" onclick="loadform()" value="Email">
-				</li>
-			</ul>
-		</table>
-	</section>
-	<header id="me">
-		<h1>Alex Wallace</h1>
-		<blockquote>
-			This is a Bio
-		</blockquote>
-	</header>
-	<span id="filler">
-		<img src="https://image.shutterstock.com/image-vector/welcome-letters-banner-on-blue-260nw-1189574716.jpg">
-	</span>
-	<footer id="foot">
-		<p id="bottom">
-			Footer
-			<blockquote>
-				This is some text
-			</blockquote>
-			<img src="https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/09/dog-landing-hero-lg.jpg?bust=1536935129&width=1080">
-		</p>
-	</footer>
+
+<div id="sidebar" class="sidebar">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<div class="main" id="main">
+  <input id="toggleside" type="button"><h2>Alex Wallace</h2>
+  <p>This is my Bio</p>
+  
+</div>
+   
 </body>
-</html>
+</html> 
