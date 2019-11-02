@@ -25,3 +25,15 @@ Attempted to add an image carousel bootstrap. All my fonts went funky.
 
 Added border to carousel to see where it was.
 Changed some css and added pictures to the carousel to make sure it worked.
+
+Changed the sidebar toggle button to look nicer. Round, colored it, etc.
+Added an html entity (&raquo; which is an arrow in html) to make it look like an arrow and set a toggle in js.
+Using jquery, after changing the value of the button it changes from the arrow to just the text "&raquo;" Sounds like a bug because the value should be the same still, an arrow....
+
+Copy and pasted the unicode arrow itself into the javascript since the usual way didnt work.
+
+Removed all the bootstrap and put it into its own html file.
+because of that some of the css that looked fine now looks funny again.
+
+created iframe to load carousel into main part of page.
+changed some css. iframe height wont change though.
