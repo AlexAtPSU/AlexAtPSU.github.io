@@ -4,69 +4,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type = "text/javascript" src = "homepage.js" ></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidebar {
-  animation:opac 0.8s;
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #6D9EEB;
-  overflow-x: hidden;
-  padding-top: 20px;
-}@keyframes opac{from{opacity:0} to{opacity:1}}
-
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-  display: block;
-}
-
-.sidebar a:hover {
-  color: #111;
-}
-
-.main {
-  margin-left: 160px; 
-  font-size: 28px; 
-  padding: 0px 10px;
-}
-
-.nomarg {
-	margin: 0px;
-}
-
-.hiding {
-	visibility: hidden;
-}
-
-
-
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-</style>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
 <div id="sidebar" class="sidebar">
   <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Contact</a>
+  <a href="https://github.com/AlexAtPSU?tab=repositories">Projects</a>
+  <a id="contact" href="#contact">Contact</a>
 </div>
 
 <div class="main" id="main">
-  <input id="toggleside" type="button"><h2>Alex Wallace</h2>
+  <input id="toggleside" type="button" value="<">
+  <h2>Alex Wallace</h2>
   <p>This is my Bio</p>
   
 </div>

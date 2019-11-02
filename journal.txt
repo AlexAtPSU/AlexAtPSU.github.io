@@ -15,3 +15,7 @@ remade jquery function to toggle class to be two classes, one with hidden visibi
 to the sidebar, fadein was added using css by animation. 
 
 removed the margin on main section when sidebar is toggled
+Fixed a bug when toggling the sidebar that caused the css to get messed up.
+it was a typo in the toggle class part.
+
+Created a seperate html form for contacting. Then setup the contact tab on the sidebar to prepend it to the page.
