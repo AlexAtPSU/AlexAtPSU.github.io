@@ -2,7 +2,7 @@ Alexander Wallace
 CS465 Web Development Full stack - M/W class
 
 Repo: https://github.com/AlexAtPSU/AlexAtPSU.github.io
-
+Site: https://alexatpsu.github.io/
 
 Took a small example of my week 2 portfolio and started from there since it was bare.
 Removed footer.
@@ -51,3 +51,5 @@ Edited some css to make the iframe look better on page.
 Still cant figure out how to edit the pictures size within iframe though.
 
 Projects currently links to my github. will change later
+
+Full screen ruins the view of the iframe... no time to fix right now though.
