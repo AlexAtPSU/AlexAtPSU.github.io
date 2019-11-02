@@ -19,3 +19,9 @@ Fixed a bug when toggling the sidebar that caused the css to get messed up.
 it was a typo in the toggle class part.
 
 Created a seperate html form for contacting. Then setup the contact tab on the sidebar to prepend it to the page.
+
+
+Attempted to add an image carousel bootstrap. All my fonts went funky.
+
+Added border to carousel to see where it was.
+Changed some css and added pictures to the carousel to make sure it worked.

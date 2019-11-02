@@ -1,5 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
+  color: black;
 }
 
 .sidebar {
@@ -44,4 +45,9 @@ body {
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
+}
+
+.carousel {
+  border: 1px solid;
+  color:black;
 }
