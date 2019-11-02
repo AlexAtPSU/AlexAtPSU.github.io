@@ -1,0 +1,95 @@
+<html>
+<head>
+	<style type="text/css">
+		body {
+			height: 300px;
+			overflow: hidden;
+		}
+		#leftbar {
+			float: left;
+			background: lightblue;
+			margin-right: 30px;
+			margin-left: -10px;
+			margin-top: -10px;
+			padding: 5px;
+			padding-bottom: 100%;
+
+		}
+		#me {
+			font-size:10px;
+		}
+		#foot {
+			bottom:-200px;
+			width: 100%;
+			position: fixed;
+			margin-left: -10px;
+			padding:10px;
+			background: black;
+			color: white;
+			float: bottom;
+		}
+		#filler{
+		}
+		h1 {
+			font-size: 40px;
+		}
+		iframe {
+			width: 300px;
+			height: 355px;
+			position: absolute;
+			top: 32%;
+			left: 37%;
+		}
+	</style>
+	<script type="text/javascript">
+		var formis = false;
+
+		function loadform(){
+			if (!formis) {
+				formis = true;
+				fill = document.getElementById('filler');
+				newelem = document.createElement('iframe');
+				newelem.src = "exercise1.html";
+				newelem.style = "background-image: url('https://thailand.nenpi1.info/wp-content/uploads/2015/02/0310c694.jpg');";
+				fill.appendChild(newelem);
+			}
+		}
+	</script>
+</head>
+<body>
+	<section id="leftbar">
+		<span>List of stuff</span>
+		<table>
+			<ol>
+				<li>
+					<a href="">This</a>
+				</li>
+				<li>
+					<a href="">That</a>
+				</li>
+				<li>
+					<input type="button" name="form" onclick="loadform()" value="Email">
+				</li>
+			</ul>
+		</table>
+	</section>
+	<header id="me">
+		<h1>Alex Wallace</h1>
+		<blockquote>
+			This is a Bio
+		</blockquote>
+	</header>
+	<span id="filler">
+		<img src="https://image.shutterstock.com/image-vector/welcome-letters-banner-on-blue-260nw-1189574716.jpg">
+	</span>
+	<footer id="foot">
+		<p id="bottom">
+			Footer
+			<blockquote>
+				This is some text
+			</blockquote>
+			<img src="https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/09/dog-landing-hero-lg.jpg?bust=1536935129&width=1080">
+		</p>
+	</footer>
+</body>
+</html>
