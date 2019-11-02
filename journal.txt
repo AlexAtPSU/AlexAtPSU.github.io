@@ -37,3 +37,5 @@ because of that some of the css that looked fine now looks funny again.
 
 created iframe to load carousel into main part of page.
 changed some css. iframe height wont change though.
+
+About and Contact buttons now change the iframe. Jquery

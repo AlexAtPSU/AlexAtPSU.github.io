@@ -16,6 +16,14 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $("#contact").click(function(){
-	$("#main").prepend("<iframe src='contact.html'>");
+  	$("iframe").attr("src", "contact.html");
+	//$("#main").prepend("<iframe src='contact.html'>");
+  });
+});
+
+$(document).ready(function(){
+  $("#about").click(function(){
+  	$("iframe").attr("src", "carousel.html");
+	//$("#main").prepend("<iframe src='contact.html'>");
   });
 });
