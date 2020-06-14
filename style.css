@@ -1,82 +1,17 @@
-body {
-  font-family: "Lato", sans-serif;
-  color: black;
-  overflow: hidden;
+
+.col-sm{
+	border: solid 1px black;
 }
 
-.sidebar {
-  animation:opac 0.8s;
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #6D9EEB;
-  overflow-x: hidden;
-  padding-top: 20px;
-}@keyframes opac{from{opacity:0} to{opacity:1}}
-
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-  display: block;
+.logo > img{
+	width: 200px;
+	height: 100px;
 }
 
-.sidebar a:hover {
-  color: #111;
+input[type=text]{
+	width: 100%;
 }
 
-.main {
-  margin-left: 160px; 
-  font-size: 28px; 
-  padding: 0px 10px;
+.company{
+	width: 100%;
 }
-
-.nomarg {
-	margin: 0px;
-}
-
-.hiding {
-	visibility: hidden;
-}
-
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-
-
-input {
-  width:50px;
-  height:30px;
-  background-color:#6D9EEB;
-  color:white;
-  border: none;
-  margin:20px auto;
-  margin-top: -20px;
-  border-radius:10px;
-  -webkit-border-radius:10px;
-  box-shadow:0 1px 2px #5e5d5b;
-  text-align: center;
-  line-height: 15px;
-  font-size: 40px;
-  float: left;
-}
-
-#aboutme{
-  margin-left: 70px;
-}
-
-iframe {
-  overflow:hidden;
-  overflow-x:hidden;
-  overflow-y:hidden;
-  height:500px;
-  width:50%;
-  position:relative;
-  border:none;
-}
-

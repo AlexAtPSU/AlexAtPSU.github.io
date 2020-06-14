@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Togo</title>
+
+	<!-- Jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<!-- BootStrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+	<!-- My Styles and Javscript -->
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="col">
+			junk
+		</div>
+		<div class="col">
+			<div class="container">
+			  <div class="row">
+			    <div class="col-sm">
+			      One of three columns
+			    </div>
+			    <div class="col-sm">
+			      One of three columns
+			    </div>
+			    <div class="col-sm">
+			      One of three columns
+			    </div>
+			  </div>
+			</div>
+			<div class="container">
+				<div class="row companies">
+					<div class="col-sm company DTF">
+						<div class="logo">
+							<img src="https://dintaifungusa.com/img/global/logo-red.svg">
+						</div>
+						<div class="names">
+						</div>
+						<form class="customer">
+							<input type="hidden" name="company" value="DTF">
+							<input type="text" name="customer">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="Templates" hidden>
+
+		<!-- Customer Name Box -->
+		<div class="input-group name"> 
+			<input type="hidden" name="date" class="date">
+			<input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+			<div class="input-group-append">
+				<button type="button" class="btn btn-outline-secondary" onclick="deleteCust(this);">Clear</button>
+			    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="checkTimer(this, new Date());">
+			    	<span class="sr-only">Toggle Dropdown</span>
+			    </button>
+			    <div class="dropdown-menu">
+			    	<a class="dropdown-item" href="#" onclick="blink(this);">Blink</a>
+			    	<a class="dropdown-item" href="#">Another action</a>
+			    	<a class="dropdown-item" href="#">Reset Timer</a> 
+			    	<div role="separator" class="dropdown-divider"></div>
+			     	<a class="dropdown-item timer" href="#">Timer</a>
+			    </div>
+			  </div>
+		</div>
+
+
+	</div>
+</body>
+</html>
