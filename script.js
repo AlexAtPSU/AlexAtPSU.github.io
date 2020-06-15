@@ -7,10 +7,43 @@ $(function(){
 	$('form.customer').submit(function(e){
 		e.preventDefault();
 		var data = formToDict(this);
-		p(data);
 		newCustomer(data["company"],data["customer"]);
 		$(this).find("input[type=text").val("");
 	});
+
+	$(".name > input[type=text]").on("keydown", function(e) {
+		list = $(this).parents(".names").find(".name > input[type=text]");
+		if (e.keyCode == 9) { // go to new customer box // NOT WORKING
+            $(this).parents(".company").find(".customer > input[type=text]").focus();
+        }
+		if (e.ctrlKey) {
+			if (e.keyCode == 46 || e.keyCode == 8) { // clear customer
+	            $(this).parents(".name").find(".btn-clear").click();
+	        }
+	        if (e.keyCode == 38) { // up
+	            if(list.index(this) > 0){
+	            	list[list.index(this) - 1].focus();
+	            }
+	        }
+	        if (e.keyCode == 40) { // down
+	            if(list.index(this) < list.length -1){
+	            	list[list.index(this) + 1].focus();
+	            }else{
+	            	$(this).parents(".company").find(".customer > input[type=text]").focus();
+	            }
+	        }
+	    }
+    });
+    $(".customer > input[type=text]").on("keydown", function(e) {
+		list = $(this).parents(".company").find(".name > input[type=text]");
+		if (e.ctrlKey) {
+	        if (e.keyCode == 38) { // up
+	            if(list.length > 0){
+	            	list[list.length -1].focus();
+	            }
+	        }
+	    }
+    });
 });
 
 
@@ -35,7 +68,16 @@ function formToDict(form){
 }
 
 function deleteCust(obj){
-	$(obj).parent().parent().remove();
+	list = $(obj).parents(".names").find(".name > input[type=text]");
+	current = $(obj).parents(".name").find("input[type=text]");
+    if(list.index(current) < list.length -1){
+    	list[list.index(current) + 1].focus();
+    } else if(list.index(current) == list.length -1 && list.length > 1) {
+    	list[list.index(current) - 1].focus();
+    } else {
+		$(current).parents(".company").find(".customer > input[type=text]").focus();
+    }
+	$(obj).parents(".name").remove();
 }
 
 function checkTimer(obj){
