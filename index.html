@@ -4,8 +4,7 @@
 	<title>Togo</title>
 
 	<!-- Jquery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
 	<!-- BootStrap -->
@@ -30,7 +29,8 @@
 				<div class="box"> <!-- container -->
 				  <div class="row">
 				    <div class="col-sm text-center info-box">
-				      <h2>One of  columns</h2>
+				      <h2>This is a List of Ready to Pickup Orders.</h2>
+				      <h2>Please Enter Only After You See Your Order is Ready.</h2>
 				    </div>
 				    <div class="col-sm text-center info-box">
 				      <marquee scrollamount="50" behavior=scroll>
@@ -49,7 +49,10 @@
 							</div>
 							<form class="customer">
 								<input type="hidden" name="company" value="DTF">
-								<input type="text" name="customer">
+								<div>
+									<hr>
+									<input type="text" name="customer">
+								</div>
 							</form>
 						</div>
 						<div id="DD" class="col-lg company card">
@@ -60,7 +63,10 @@
 							</div>
 							<form class="customer">
 								<input type="hidden" name="company" value="DD">
-								<input type="text" name="customer">
+								<div>
+									<hr>
+									<input type="text" name="customer">
+								</div>
 							</form>
 						</div>
 						<div id="PM" class="col-lg company card">
@@ -71,7 +77,10 @@
 							</div>
 							<form class="customer">
 								<input type="hidden" name="company" value="PM">
-								<input type="text" name="customer">
+								<div>
+									<hr>
+									<input type="text" name="customer">
+								</div>
 							</form>
 						</div>
 						<div id="C" class="col-lg company card">
@@ -82,7 +91,10 @@
 							</div>
 							<form class="customer">
 								<input type="hidden" name="company" value="C">
-								<input type="text" name="customer">
+								<div>
+									<hr>
+									<input type="text" name="customer">
+								</div>
 							</form>
 						</div>
 						<div id=UE class="col-lg company card">
@@ -93,7 +105,10 @@
 							</div>
 							<form class="customer">
 								<input type="hidden" name="company" value="UE">
-								<input type="text" name="customer">
+								<div>
+									<hr>
+									<input type="text" name="customer">
+								</div>
 							</form>
 						</div>
 						<div id="GH" class="col-lg company card">
@@ -104,7 +119,10 @@
 							</div>
 							<form class="customer">
 								<input type="hidden" name="company" value="GH">
-								<input type="text" name="customer">
+								<div>
+									<hr>
+									<input type="text" name="customer">
+								</div>
 							</form>
 						</div>
 					</div>
@@ -121,8 +139,8 @@
 			<input type="hidden" name="date" class="date">
 			<input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 			<div class="input-group-append">
-				<button type="button" class="btn btn-outline-secondary btn-clear" onclick="deleteCust(this);"><i class="fa fa-times" aria-hidden="true"></i></button>
-			    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="checkTimer(this, new Date());">
+				<button type="button" class="btn btn-clear" onclick="deleteCust(this);"><i class="fa fa-times" aria-hidden="true"></i></button>
+			    <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="checkTimer(this, new Date());">
 			    	<span class="sr-only">Toggle Dropdown</span>
 			    </button>
 			    <div class="dropdown-menu">

@@ -14,7 +14,7 @@ $(function(){
 	$(".name > input[type=text]").on("keydown", function(e) {
 		list = $(this).parents(".names").find(".name > input[type=text]");
 		if (e.keyCode == 9) { // go to new customer box // NOT WORKING
-            $(this).parents(".company").find(".customer > input[type=text]").focus();
+            $(this).parents(".company").find(".customer > div > input[type=text]").focus();
         }
 		if (e.ctrlKey) {
 			if (e.keyCode == 46 || e.keyCode == 8) { // clear customer
@@ -29,12 +29,12 @@ $(function(){
 	            if(list.index(this) < list.length -1){
 	            	list[list.index(this) + 1].focus();
 	            }else{
-	            	$(this).parents(".company").find(".customer > input[type=text]").focus();
+	            	$(this).parents(".company").find(".customer > div > input[type=text]").focus();
 	            }
 	        }
 	    }
     });
-    $(".customer > input[type=text]").on("keydown", function(e) {
+    $(".customer > div > input[type=text]").on("keydown", function(e) {
 		list = $(this).parents(".company").find(".name > input[type=text]");
 		if (e.ctrlKey) {
 	        if (e.keyCode == 38) { // up
@@ -48,10 +48,23 @@ $(function(){
 
 
 function newCustomer(comp, cust){
+	if (cust.length > 0)
+		cust = cust.toUpperCase()
+	if (cust.length > 1) // Later Setup option for this (~ && bool)
+		cust = cust[0] + cust.substring(1).toLowerCase();
 	var box = $(".name").last().clone(true);
 	box.find(".date").val(new Date());
 	box.find("input[type=text]").val(cust);
+	box.find('button').css("display", "none");
+	box.css("display", "none").css("bottom","-100px");
 	box.appendTo("#"+comp+" > .names");
+	box.animate({height:"show",bottom:"0px"}, function(){
+		$(this).find("button").animate({width:"show"},100);
+
+		blink($(this).find("input[type=text]"));
+	});
+
+	// blink(box.find("input[type=text]"));
 }
 
 function p(text){ // quick console for testing
@@ -75,7 +88,7 @@ function deleteCust(obj){
     } else if(list.index(current) == list.length -1 && list.length > 1) {
     	list[list.index(current) - 1].focus();
     } else {
-		$(current).parents(".company").find(".customer > input[type=text]").focus();
+		$(current).parents(".company").find(".customer > div > input[type=text]").focus();
     }
 	$(obj).parents(".name").remove();
 }

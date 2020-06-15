@@ -1,16 +1,29 @@
 body{
 	overflow-x: hidden;
-	background: #007bff;
-  	background: linear-gradient(to right, #0062E6, #33AEFF);
+	font-family: "SuisseIntl Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bolder;
+	/*background: #efebda;*/
 }
 
 input[type=text]{
 	width: 100%;
+	font-family: "SuisseIntl Medium";
+	background: #efebda;
+	font-weight: bolder;
+	border: solid 2px black;
+	color: black;
+}
+
+.btn{
+	border: solid 2px black;
+	height: 38px;
+	border-radius: 0px;
 }
 
 h1{
-	font-weight: 500; 
+	font-weight: 400; 
 	font-size: 4.5em;
+	font-family: "SuisseWorks Medium", serif;
 }
 
 .col-sm{
@@ -44,28 +57,34 @@ h1{
 .company{
 	width: 100%
 	margin: 5px;
-	padding-bottom: 40px; /*Protect new customer box*/
+	padding-bottom: 55px; /*Protect new customer box*/
 }
 
 .name{
 	margin:5px 0 5px 0;
 }
 
-.customer{
+.customer > div{
 	margin:10px 0 10px 0;
 	position: absolute;
     bottom: 0;
     width: 90%;
+    border-width: 1px;
 }
 
 .card {
-  border: none;
-  border-radius: 1rem;
-  transition: all 0.2s;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-  margin: 0 5px 0 5px;
+	/*border: solid black 1px;*/
+	border-radius: 0rem;
+	transition: all 0.2s;
+	/*box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);*/
+	margin: 0 5px 0 0px;
+
+	background: #efebda;
+	/*background: linear-gradient(to top left, #FFF, #efebda);*/
 }
 
 .all{
 	padding:0 15px 0 15px;
+	border: solid 5px #e31c2c;
+	height: 100vh;
 }
