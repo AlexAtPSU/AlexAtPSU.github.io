@@ -18,7 +18,7 @@ function newCustomer(comp, cust){
 	var box = $(".name").last().clone(true);
 	box.find(".date").val(new Date());
 	box.find("input[type=text]").val(cust);
-	box.appendTo(".company."+comp+" > .names");
+	box.appendTo("#"+comp+" > .names");
 }
 
 function p(text){ // quick console for testing

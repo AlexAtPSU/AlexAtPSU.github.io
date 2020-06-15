@@ -1,17 +1,70 @@
-
-.col-sm{
-	border: solid 1px black;
-}
-
-.logo > img{
-	width: 200px;
-	height: 100px;
+body{
+	overflow-x: hidden;
+	background: #007bff;
+  	background: linear-gradient(to right, #0062E6, #33AEFF);
 }
 
 input[type=text]{
 	width: 100%;
 }
 
+h1{
+	font-weight: 500; 
+	font-size: 4.5em;
+}
+
+.col-sm{
+	border: solid 1px black;
+}
+
+.logo > img{
+	width: 90%;
+	height: 100px;
+	margin: 5px;
+}
+
+.side-bar{
+	max-width: 10vw;
+}
+
+.box{
+	padding: 5px;
+}
+
+.info-box{
+	height: 20vh;
+	max-height: 100px;
+	padding: 0px;
+}
+
+.companies{
+	height: 80vh;
+}
+
 .company{
-	width: 100%;
+	width: 100%
+	margin: 5px;
+}
+
+.name{
+	margin:5px 0 5px 0;
+}
+
+.customer{
+	margin:10px 0 10px 0;
+	position: absolute;
+    bottom: 0;
+    width: 90%;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  margin: 0 5px 0 5px;
+}
+
+.all{
+	padding:0 15px 0 15px;
 }
