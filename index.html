@@ -7,6 +7,9 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
+	<!-- Save Cookies -->
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
 	<!-- BootStrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
@@ -29,107 +32,123 @@
 				<div class="box"> <!-- container -->
 				  <div class="row">
 				    <div class="col-sm text-center info-box">
-				      <h2>This is a List of Ready to Pickup Orders.</h2>
-				      <h2>Please Enter Only After You See Your Order is Ready.</h2>
+				      This is a List of Ready to Pickup Orders.
+				      <br>
+				      Please Enter Only After You See Your Order is Ready.
 				    </div>
 				    <div class="col-sm text-center info-box">
-				      <marquee scrollamount="50" behavior=scroll>
-				      	<h1>Charlie is Always Watching</h1>
-				      </marquee>
+				      	<h1>
+				      		<marquee scrollamount="50" behavior=scroll>
+				      			Charlie is Always Watching
+				    		</marquee>
+				  		</h1>
 				    </div>
 				  </div>
 				</div>
 				<div class="box"> <!-- container -->
 					<div class="row companies">
-						<div id="DTF" class="col-lg company card">
-							<div class="logo">
-								<img src="https://dintaifungusa.com/img/global/logo-red.svg">
-							</div>
-							<div class="names">
-							</div>
-							<form class="customer">
-								<input type="hidden" name="company" value="DTF">
-								<div>
-									<hr>
-									<input type="text" name="customer">
-								</div>
-							</form>
-						</div>
-						<div id="DD" class="col-lg company card">
-							<div class="logo">
-								<img src="https://dintaifungusa.com/img/global/logo-red.svg">
-							</div>
-							<div class="names">
-							</div>
-							<form class="customer">
-								<input type="hidden" name="company" value="DD">
-								<div>
-									<hr>
-									<input type="text" name="customer">
-								</div>
-							</form>
-						</div>
-						<div id="PM" class="col-lg company card">
-							<div class="logo">
-								<img src="https://dintaifungusa.com/img/global/logo-red.svg">
-							</div>
-							<div class="names">
-							</div>
-							<form class="customer">
-								<input type="hidden" name="company" value="PM">
-								<div>
-									<hr>
-									<input type="text" name="customer">
-								</div>
-							</form>
-						</div>
-						<div id="C" class="col-lg company card">
-							<div class="logo">
-								<img src="https://dintaifungusa.com/img/global/logo-red.svg">
-							</div>
-							<div class="names">
-							</div>
-							<form class="customer">
-								<input type="hidden" name="company" value="C">
-								<div>
-									<hr>
-									<input type="text" name="customer">
-								</div>
-							</form>
-						</div>
-						<div id=UE class="col-lg company card">
-							<div class="logo">
-								<img src="https://dintaifungusa.com/img/global/logo-red.svg">
-							</div>
-							<div class="names">
-							</div>
-							<form class="customer">
-								<input type="hidden" name="company" value="UE">
-								<div>
-									<hr>
-									<input type="text" name="customer">
-								</div>
-							</form>
-						</div>
-						<div id="GH" class="col-lg company card">
-							<div class="logo">
-								<img src="https://dintaifungusa.com/img/global/logo-red.svg">
-							</div>
-							<div class="names">
-							</div>
-							<form class="customer">
-								<input type="hidden" name="company" value="GH">
-								<div>
-									<hr>
-									<input type="text" name="customer">
-								</div>
-							</form>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div> 
+
+	
+
+	<!-- Settings Modal -->
+	<button type="button" class="btn btn-dark btn-modal" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadModal()">
+  		Settings
+	</button>
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">Settings</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Main</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">DTF</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">idk</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<form id="settings-form">
+					  <div class="form-group row">
+					  	<label for="num-companies" class="col-sm-2 col-form-label">Tabs</label>
+					    <div class="col-sm-3">
+					      	<input type="number" min="1" class="form-control" name="num" id="num-companies" value="1">
+					    </div>
+					    <div class="col-sm-7">
+					    	<select class="custom-select" id="inlineFormCustomSelect">
+						        <option selected>Choose...</option>
+						        <!-- <option value="1">One</option> -->
+						    </select>
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+					    </div>
+					  </div>
+					  <fieldset class="form-group">
+					    <div class="row">
+					      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+					      <div class="col-sm-10">
+					        <div class="form-check">
+					          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" >
+					          <label class="form-check-label" for="gridRadios1">
+					            First radio
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+					          <label class="form-check-label" for="gridRadios2">
+					            Second radio
+					          </label>
+					        </div>
+					      </div>
+					    </div>
+					  </fieldset>
+					  <div class="form-group row">
+					    <div class="col-sm-2">Checkbox</div>
+					    <div class="col-sm-10">
+					      <div class="form-check">
+					        <input class="form-check-input" type="checkbox" id="gridCheck1">
+					        <label class="form-check-label" for="gridCheck1">
+					          Example checkbox
+					        </label>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <div class="col-sm-10">
+					      <button type="submit" id="settings-save" class="btn btn-primary btn-save" hidden>Save</button>
+					    </div>
+					  </div>
+					</div>
+					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+				  	<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+				</form>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-info" onclick="$('#settings-save').click()">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- End of main page -->
 
 	<div class="Templates" hidden>
@@ -139,8 +158,8 @@
 			<input type="hidden" name="date" class="date">
 			<input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 			<div class="input-group-append">
-				<button type="button" class="btn btn-clear" onclick="deleteCust(this);"><i class="fa fa-times" aria-hidden="true"></i></button>
-			    <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="checkTimer(this, new Date());">
+				<button type="button" class="btn btn-clear btn-del" onclick="deleteCust(this);"><i class="fa fa-times" aria-hidden="true"></i></button>
+			    <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="loadTimer(this);">
 			    	<span class="sr-only">Toggle Dropdown</span>
 			    </button>
 			    <div class="dropdown-menu">
@@ -151,6 +170,20 @@
 			     	<a class="dropdown-item timer" href="#">Timer</a>
 			    </div>
 			  </div>
+		</div>
+
+		<div id="" class="col-lg company card">
+			<div class="logo text-center">
+				<img src="https://dintaifungusa.com/img/global/logo-red.svg">
+			</div>
+			<div class="names">
+			</div>
+			<form class="customer">
+				<div>
+					<hr>
+					<input type="text" name="customer">
+				</div>
+			</form>
 		</div>
 
 

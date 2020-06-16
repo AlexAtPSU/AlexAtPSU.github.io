@@ -14,6 +14,7 @@ input[type=text]{
 	color: black;
 }
 
+
 .btn{
 	border: solid 2px black;
 	height: 38px;
@@ -22,7 +23,7 @@ input[type=text]{
 
 h1{
 	font-weight: 400; 
-	font-size: 4.5em;
+	font-size: 8vh;
 	font-family: "SuisseWorks Medium", serif;
 }
 
@@ -32,8 +33,9 @@ h1{
 
 .logo > img{
 	width: 90%;
-	height: 100px;
+	height: 90%;
 	margin: 5px;
+	max-width: 300px;
 }
 
 .side-bar{
@@ -48,6 +50,10 @@ h1{
 	height: 20vh;
 	max-height: 100px;
 	padding: 0px;
+	font-size: 3vh;
+	line-height: 5vh;
+	overflow-wrap: anywhere;
+	hyphens: auto;
 }
 
 .companies{
@@ -87,4 +93,14 @@ h1{
 	padding:0 15px 0 15px;
 	border: solid 5px #e31c2c;
 	height: 100vh;
+}
+
+.btn-modal{
+	position: absolute;
+	bottom: 15px;
+	left: 15px;
+}
+
+#settings-form{
+	margin: 10px;
 }

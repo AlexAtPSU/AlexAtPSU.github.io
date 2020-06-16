@@ -1,14 +1,27 @@
+// Globals
+var companies = ["DTF"];
+
 // On Load
 $(function(){
 	console.log("Start");
+
+	var company = $(".company.card").last().clone(true);
+	company.attr("id", "DTF");
+	company.appendTo(".companies");
 
 	newCustomer("DTF","Dennis");
 
 	$('form.customer').submit(function(e){
 		e.preventDefault();
 		var data = formToDict(this);
-		newCustomer(data["company"],data["customer"]);
+		newCustomer($(this).parents(".company").attr("id"),data["customer"]);
 		$(this).find("input[type=text").val("");
+	});
+
+	$('form#settings-form').submit(function(e){
+		e.preventDefault();
+		var data = formToDict(this);
+		saveCookies(data);
 	});
 
 	$(".name > input[type=text]").on("keydown", function(e) {
@@ -17,7 +30,7 @@ $(function(){
             $(this).parents(".company").find(".customer > div > input[type=text]").focus();
         }
 		if (e.ctrlKey) {
-			if (e.keyCode == 46 || e.keyCode == 8) { // clear customer
+			if (e.keyCode == 46 || e.keyCode == 8) { // clear customer // NOT WORKING
 	            $(this).parents(".name").find(".btn-clear").click();
 	        }
 	        if (e.keyCode == 38) { // up
@@ -46,14 +59,39 @@ $(function(){
     });
 });
 
+function loadCookies(){
 
-function newCustomer(comp, cust){
+	applySettings();
+}
+
+function saveCookies(settings){
+	$.each( settings, function( key, value ) {
+		p( key + ": " + value );
+		Cookies.set(key, value);
+	});
+	p(Cookies.get());
+}
+
+function applySettings(){
+	
+}
+
+function companyCards(num){
+	for (var i = 0; i < num; i++) {
+		
+	}
+}
+
+
+function newCustomer(comp, cust, date){
+	if (!date)
+		date = new Date();
 	if (cust.length > 0)
 		cust = cust.toUpperCase()
 	if (cust.length > 1) // Later Setup option for this (~ && bool)
 		cust = cust[0] + cust.substring(1).toLowerCase();
 	var box = $(".name").last().clone(true);
-	box.find(".date").val(new Date());
+	box.find(".date").val(date);
 	box.find("input[type=text]").val(cust);
 	box.find('button').css("display", "none");
 	box.css("display", "none").css("bottom","-100px");
@@ -93,11 +131,9 @@ function deleteCust(obj){
 	$(obj).parents(".name").remove();
 }
 
-function checkTimer(obj){
+function loadTimer(obj){
 	var date = new Date($(obj).parents(".name").find(".date").val());
-	var open = $(obj).parent().hasClass("show");
 	$(obj).parents(".company").find(".timer").text("Time: "+(Math.abs(new Date() - date)/1000).toClock());
-	open = $(obj).parent().hasClass("show");
 }
 
 Number.prototype.toClock = function () {
@@ -113,11 +149,15 @@ Number.prototype.toClock = function () {
 }
 
 function blink(obj){
-	var time = 500
+	var blink_time = 500
 	var timer = setInterval(function(){
 			$(obj).parents(".name").find("input[type=text]").toggleClass("bg-danger text-white");
-	},time);
+	},blink_time);
 	setTimeout(function(){
 		clearTimeout(timer);
-	},time * 10);
+	},blink_time * 10);
+}
+
+function loadModal(){
+	$("#home-tab").click();
 }
