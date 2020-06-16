@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8"/>
 	<title>Togo</title>
 
 	<!-- Jquery -->
@@ -86,13 +87,18 @@
 					  <div class="form-group row">
 					  	<label for="num-companies" class="col-sm-2 col-form-label">Tabs</label>
 					    <div class="col-sm-3">
-					      	<input type="number" min="1" class="form-control" name="num" id="num-companies" value="1">
+					      	<input type="number" min="1" class="form-control" name="num" id="num-companies" onchange="updateNumComps(this.value)" value="1">
 					    </div>
 					    <div class="col-sm-7">
-					    	<select class="custom-select" id="inlineFormCustomSelect">
-						        <option selected>Choose...</option>
-						        <!-- <option value="1">One</option> -->
+					    	<select class="custom-select" id="selectCompany" onchange="showCompNameBox(this)">
+						        <option class="settings-option" value="0" selected>Choose...</option>
 						    </select>
+					    </div>
+					  </div>
+					  <div class="form-group row settings-names">
+					  	<label class="col-sm-3 col-form-label">Tab Name</label>
+					  	<div class="col-sm-9 settings-name">
+					      <input type="text" class="form-control" disabled>
 					    </div>
 					  </div>
 					  <div class="form-group row">

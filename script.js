@@ -1,13 +1,11 @@
 // Globals
-var companies = ["DTF"];
+var companies = [];
 
 // On Load
 $(function(){
 	console.log("Start");
 
-	var company = $(".company.card").last().clone(true);
-	company.attr("id", "DTF");
-	company.appendTo(".companies");
+	loadCookies();
 
 	newCustomer("DTF","Dennis");
 
@@ -60,13 +58,22 @@ $(function(){
 });
 
 function loadCookies(){
+	var sett = Cookies.get();
+	var num = sett["num"];
+	if(num > 0){
+		for(var i = 1; i <= num; i++){
+			companies.push(sett["comp"+i]);
+		}
+		companyCards(num);
+		updateNumComps(num);
 
-	applySettings();
+		settingsTabs(num)
+		applySettings();
+	}
 }
 
 function saveCookies(settings){
 	$.each( settings, function( key, value ) {
-		p( key + ": " + value );
 		Cookies.set(key, value);
 	});
 	p(Cookies.get());
@@ -77,8 +84,11 @@ function applySettings(){
 }
 
 function companyCards(num){
+	var company;
 	for (var i = 0; i < num; i++) {
-		
+		company = $(".company.card").last().clone(true);
+		company.attr("id", companies[i].replace(" ", ""));
+		company.appendTo(".companies");
 	}
 }
 
@@ -155,9 +165,47 @@ function blink(obj){
 	},blink_time);
 	setTimeout(function(){
 		clearTimeout(timer);
+		$(obj).parents(".name").find("input[type=text]").removeClass("bg-danger text-white");
 	},blink_time * 10);
 }
 
 function loadModal(){
 	$("#home-tab").click();
+}
+
+function updateNumComps(newNum){
+	$("#num-companies").val(newNum);
+	num = parseInt(newNum);
+	var curNum = $(".settings-option").length;
+	for (curNum = $(".settings-option").length; curNum < num+1; curNum = $(".settings-option").length) {
+		$("#selectCompany").append("<option class='settings-option' value='"+(curNum)+"'>Tab "+curNum+"</option>");
+		p(curNum);
+		if(companies[curNum-1]){
+			name = companies[curNum-1];
+		}else{
+			name = "Name" + curNum;
+		}
+		$(".settings-names").append("<div class='col-sm-9 settings-name d-none'><input type='text' value='"+name+"' name=comp"+curNum+" class='form-control'></div>");
+	}
+	for(var i = curNum; num+1 < i; i--){
+		$($(".settings-option")[i-1]).addClass("d-none");
+	}
+	for(var i = 1; i < num; i++){
+		$($(".settings-option")[i]).removeClass("d-none");
+	}
+}
+
+function showCompNameBox(selection){
+	var cur = selection.options[selection.selectedIndex].value;
+	for(var i = 0; i < $(".settings-name").length; i++){
+		if (i != cur){
+			$($(".settings-name")[i]).addClass("d-none");
+		}else{
+			$($(".settings-name")[i]).removeClass("d-none");
+		}
+	}
+}
+
+function settingsTabs(){
+	
 }
