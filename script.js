@@ -82,6 +82,8 @@ function loadCookies(){
 			pictures[keys[i].replace("-pic","")] = sett[keys[i]];
 	}
 
+	loadJumps(num);
+
 	if(sett["info1"]){
 		$("#info1").html(sett["info1"]);
 		$("#info1-box").val(sett["info1"]);
@@ -163,7 +165,7 @@ function formToDict(form){
 	return result;
 }
 
-function deleteCust(obj){
+function deleteCust(obj, dontsave){
 	list = $(obj).parents(".names").find(".name > input[type=text]");
 	current = $(obj).parents(".name").find("input[type=text]");
     if(list.index(current) < list.length -1){
@@ -173,7 +175,8 @@ function deleteCust(obj){
     } else {
 		$(current).parents(".company").find(".customer > div > input[type=text]").focus();
     }
-    storeTime(obj);
+    if(!dontsave)
+    	storeTime(obj);
 	$(obj).parents(".name").remove();
 }
 
@@ -287,6 +290,24 @@ function storeTime(obj){
 	$("#"+comp+"-tab-cont").find(".sd-time").text(sd.toClock());
 }
 
+function loadJumps(num){
+	for(var i = 0; i < num; i++){
+		$(".jumpColumn").last().append("<a class='dropdown-item jump-column' href='#' onclick='jumpToColumn(this,"+companies[i]+")'>"+companies[i]+"</a>");
+	}
+}
+
+function jumpToColumn(obj, comp){
+	p(comp);
+	$(comp).find(".names").append($(obj).parents(".name"));
+	$(obj).parents(".dropdown-menu").find(".jump-column").each(function(){
+		if ($(this).text().replace(" ","") == $(comp).attr("id")) {
+			$(this).addClass("d-none");
+		}else{
+			$(this.removeClass("d-none"));
+		}
+	});
+}
+
 let getMean = function (data) {
     return data.reduce(function (a, b) {
         return Number(a) + Number(b);
@@ -299,3 +320,4 @@ let getSD = function (data) {
             return sq + Math.pow(n - m, 2);
         }, 0) / (data.length - 1));
 };
+
