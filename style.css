@@ -5,7 +5,7 @@ body{
 	/*background: #efebda;*/
 }
 
-input[type=text]{
+.customer-box{
 	width: 100%;
 	font-family: "SuisseIntl Medium";
 	background: #efebda;
@@ -33,9 +33,15 @@ h1{
 
 .logo > img{
 	width: 90%;
-	height: 90%;
-	margin: 5px;
+	margin: 10px 5px 5px 5px;
 	max-width: 300px;
+	height: 100px;
+	max-height: 90%;
+	padding: 5px;
+}
+
+.logo{
+	height: 19%;
 }
 
 .side-bar{
@@ -70,11 +76,11 @@ h1{
 	margin:5px 0 5px 0;
 }
 
-.customer > div{
+form.customer > div{
 	margin:10px 0 10px 0;
 	position: absolute;
     bottom: 0;
-    width: 90%;
+    width: 95%;
     border-width: 1px;
 }
 
@@ -105,3 +111,21 @@ h1{
 	margin: 10px;
 }
 
+.company-tab{
+	padding: 5% 0 0 0;
+}
+
+
+.tab-pane{
+	display:none;
+}
+
+.active[role=tabpanel]{
+	display:block;	
+}
+
+.btn-clear-row{
+	border-radius: 0.25rem;
+	margin-left: 1%;
+	margin-right: 2%;
+}

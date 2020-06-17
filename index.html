@@ -27,17 +27,28 @@
 	<div class="box all">
 		<div class="row">
 			<div class="col side-bar">
-				Side Bar
+				<h3>Tigard - Dine in by Reservation<span>Washington Square</span></h3>
+				Book your reservation
+				<h4>Address:</h4>
+				9724 SW Washington Square Rd., <br>Tigard, OR 97223<br>
+				(503) 768-9888
+
+				Store Hours:
+				Monday–Thursday:11:00 AM–8:30 PM
+				Friday–Saturday:11:00 AM–9:00 PM
+				Sunday:11:00 AM–8:30 PM
+
+				We are Marked Safe® certified. 
 			</div>
 			<div class="col main">
 				<div class="box"> <!-- container -->
 				  <div class="row">
-				    <div class="col-sm text-center info-box">
+				    <div id="info1" class="col-sm text-center info-box">
 				      This is a List of Ready to Pickup Orders.
 				      <br>
 				      Please Enter Only After You See Your Order is Ready.
 				    </div>
-				    <div class="col-sm text-center info-box">
+				    <div id="info2" class="col-sm text-center info-box">
 				      	<h1>
 				      		<marquee scrollamount="50" behavior=scroll>
 				      			Charlie is Always Watching
@@ -61,7 +72,7 @@
   		Settings
 	</button>
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
+	  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="exampleModalLongTitle">Settings</h5>
@@ -70,20 +81,14 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	      	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	      	<ul class="nav nav-tabs" id="myTabs" role="tablist">
 			  <li class="nav-item">
 			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Main</a>
 			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">DTF</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">idk</a>
-			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<form id="settings-form">
+				<form id="settings-form">
+					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 					  <div class="form-group row">
 					  	<label for="num-companies" class="col-sm-2 col-form-label">Tabs</label>
 					    <div class="col-sm-3">
@@ -91,36 +96,44 @@
 					    </div>
 					    <div class="col-sm-7">
 					    	<select class="custom-select" id="selectCompany" onchange="showCompNameBox(this)">
-						        <option class="settings-option" value="0" selected>Choose...</option>
+						        <option class="settings-option" value="0" selected>Choose Name to Edit...</option>
 						    </select>
 					    </div>
 					  </div>
 					  <div class="form-group row settings-names">
-					  	<label class="col-sm-3 col-form-label">Tab Name</label>
-					  	<div class="col-sm-9 settings-name">
+					  	<label class="col-sm-2 col-form-label">Tab Name</label>
+					  	<div class="col-sm-10 settings-name">
 					      <input type="text" class="form-control" disabled>
 					    </div>
 					  </div>
+					  <hr>
 					  <div class="form-group row">
-					    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+					    <label for="info1" class="col-sm-2 col-form-label">Top Bar 1</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+					      <input type="text" class="form-control" id="info1-box" name="info1">
 					    </div>
 					  </div>
+					  <div class="form-group row">
+					    <label for="info2" class="col-sm-2 col-form-label">Top Bar 2</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="info2-box" name="info2">
+					    </div>
+					  </div>
+					  <hr>
 					  <fieldset class="form-group">
 					    <div class="row">
-					      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+					      <legend class="col-form-label col-sm-2 pt-0">Letter Case</legend>
 					      <div class="col-sm-10">
 					        <div class="form-check">
-					          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" >
-					          <label class="form-check-label" for="gridRadios1">
-					            First radio
+					          <input class="form-check-input" type="radio" name="casing" id="case-first" value="0" >
+					          <label class="form-check-label" for="case-first">
+					            First Letter
 					          </label>
 					        </div>
 					        <div class="form-check">
-					          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-					          <label class="form-check-label" for="gridRadios2">
-					            Second radio
+					          <input class="form-check-input" type="radio" name="casing" id="case-all" value="1">
+					          <label class="form-check-label" for="case-all">
+					            ALL CAPS
 					          </label>
 					        </div>
 					      </div>
@@ -143,8 +156,6 @@
 					    </div>
 					  </div>
 					</div>
-					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-				  	<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 				</form>
 			</div>
 	      </div>
@@ -162,7 +173,7 @@
 		<!-- Customer Name Box -->
 		<div class="input-group name"> 
 			<input type="hidden" name="date" class="date">
-			<input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+			<input type="text" class="form-control customer-box" aria-label="Text input with segmented dropdown button">
 			<div class="input-group-append">
 				<button type="button" class="btn btn-clear btn-del" onclick="deleteCust(this);"><i class="fa fa-times" aria-hidden="true"></i></button>
 			    <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="loadTimer(this);">
@@ -171,27 +182,55 @@
 			    <div class="dropdown-menu">
 			    	<a class="dropdown-item" href="#" onclick="blink(this);">Blink</a>
 			    	<a class="dropdown-item" href="#">Another action</a>
-			    	<a class="dropdown-item" href="#">Reset Timer</a> 
+			    	<a class="dropdown-item" href="#" onclick="resetTimer(this);">Reset Timer</a> 
 			    	<div role="separator" class="dropdown-divider"></div>
 			     	<a class="dropdown-item timer" href="#">Timer</a>
 			    </div>
 			  </div>
 		</div>
 
+
 		<div id="" class="col-lg company card">
-			<div class="logo text-center">
-				<img src="https://dintaifungusa.com/img/global/logo-red.svg">
+			<div class="text-center logo text-center align-middle">
+				<img class="img-fluid rounded mx-auto" src="https://dintaifungusa.com/img/global/logo-red.svg">
 			</div>
 			<div class="names">
 			</div>
 			<form class="customer">
-				<div>
+				<div class="form-group row">
 					<hr>
-					<input type="text" name="customer">
+					<input type="text" class="customer-box col form-control" name="customer">
+					<button type="button" class="btn btn-clear btn-clear-row" onclick="deleteColumn(this);"><i class="fa fa-times" aria-hidden="true"></i></button>
 				</div>
 			</form>
 		</div>
 
+
+		<div class="tab-pane fade company-tab" id="" role="tabpanel" aria-labelledby="-tab">
+			<div class="form-group row">
+		    	<label class="col-sm-5 col-form-label">Average Pickup Time: </label>
+		    	<div class="col-sm-5">
+		      		<span class="average-time">0</span>
+		    	</div>
+		    	<label class="col-sm-5 col-form-label">Standard Diviation: </label>
+		    	<div class="col-sm-5">
+		      		<span class="sd-time">0</span>
+		    	</div>
+		  	</div>
+		  	<br><hr><br>
+			<div class="form-group row">
+		    	<label for="" class="col-sm-5 col-form-label">Picture Link</label>
+		    	<div class="col-sm-5">
+		      		<input type="text" class="form-control" name="">
+		    	</div>
+		  	</div>
+		  	<div class="form-group row">
+		    	<label for="" class="col-sm-5 col-form-label">Background Color</label>
+		    	<div class="col-sm-5">
+		      		<input type="color" class="form-control" name="" value="#efebda">
+		    	</div>
+		  	</div>
+		</div>
 
 	</div>
 </body>

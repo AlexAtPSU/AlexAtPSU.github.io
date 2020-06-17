@@ -1,13 +1,16 @@
 // Globals
 var companies = [];
+var pictures = {"DoorDash":"https://bluelemon.com/wp-content/uploads/2019/05/logo-doordash-.png","PostMates":"https://promoaffiliates.com/wp-content/uploads/2017/03/PostmatesLogoLong.png","Caviar":"https://ww1.prweb.com/prfiles/2014/06/30/12214945/caviar_orange_wordmark.png","UberEats":"https://flyclipart.com/downloadpage/images/uber-eats-logo-37792.png/37792","GrubHub":"https://res.cloudinary.com/popmenu/image/upload/c_limit,f_auto,h_1440,q_auto,w_1440/eykrtyhpcfiybielo3yy.png"};
+var colors = {};
+var blink_time = 500;
+var times = {};
+var casing = 0;
 
 // On Load
 $(function(){
 	console.log("Start");
 
 	loadCookies();
-
-	newCustomer("DTF","Dennis");
 
 	$('form.customer').submit(function(e){
 		e.preventDefault();
@@ -60,16 +63,41 @@ $(function(){
 function loadCookies(){
 	var sett = Cookies.get();
 	var num = sett["num"];
-	if(num > 0){
-		for(var i = 1; i <= num; i++){
-			companies.push(sett["comp"+i]);
-		}
-		companyCards(num);
-		updateNumComps(num);
+	if(!sett["num"])
+		num = 0;
 
-		settingsTabs(num)
-		applySettings();
+	for(var i = 1; i <= num; i++){
+		companies.push(sett["comp"+i]);
 	}
+	if(num == 0){
+		num = 1;
+		companies.push("DTF");
+	}
+
+	var keys = Object.keys(sett);
+	for(var i = 0; i < keys.length; i++){
+		if(keys[i].search("-color") > 0)
+			colors[keys[i].replace("-color","")] = sett[keys[i]];
+		if(keys[i].search("-pic") > 0)
+			pictures[keys[i].replace("-pic","")] = sett[keys[i]];
+	}
+
+	if(sett["info1"]){
+		$("#info1").html(sett["info1"]);
+		$("#info1-box").val(sett["info1"]);
+	}
+
+	if(sett["info2"]){
+		$("#info2").html(sett["info2"]);
+		$("#info2-box").val(sett["info2"]);
+	}
+
+	casing = parseInt(sett["casing"]);
+	companyCards(num);
+	updateNumComps(num);
+
+	settingsTabs(num)
+	applySettings();
 }
 
 function saveCookies(settings){
@@ -85,9 +113,16 @@ function applySettings(){
 
 function companyCards(num){
 	var company;
+	var nameNoSpace;
 	for (var i = 0; i < num; i++) {
+		nameNoSpace = companies[i].replace(" ", "");
 		company = $(".company.card").last().clone(true);
-		company.attr("id", companies[i].replace(" ", ""));
+		company.attr("id", nameNoSpace);
+		if(pictures[nameNoSpace])
+			company.find("img").attr("src", pictures[nameNoSpace]);
+		if(colors[nameNoSpace])
+			company.css("background",colors[nameNoSpace]);
+		company.find("input").css("background",colors[nameNoSpace]);
 		company.appendTo(".companies");
 	}
 }
@@ -98,11 +133,11 @@ function newCustomer(comp, cust, date){
 		date = new Date();
 	if (cust.length > 0)
 		cust = cust.toUpperCase()
-	if (cust.length > 1) // Later Setup option for this (~ && bool)
+	if (cust.length > 1 && !casing) // Later Setup option for this (~ && bool)
 		cust = cust[0] + cust.substring(1).toLowerCase();
 	var box = $(".name").last().clone(true);
 	box.find(".date").val(date);
-	box.find("input[type=text]").val(cust);
+	box.find("input[type=text]").css("background",colors[comp]).val(cust);
 	box.find('button').css("display", "none");
 	box.css("display", "none").css("bottom","-100px");
 	box.appendTo("#"+comp+" > .names");
@@ -138,7 +173,16 @@ function deleteCust(obj){
     } else {
 		$(current).parents(".company").find(".customer > div > input[type=text]").focus();
     }
+    storeTime(obj);
 	$(obj).parents(".name").remove();
+}
+
+function deleteColumn(obj){
+	list = $(obj).parents(".company").find(".name");
+	for(var i = 0; i < list.length; i++){
+		list[i].remove();
+	}
+
 }
 
 function loadTimer(obj){
@@ -159,7 +203,6 @@ Number.prototype.toClock = function () {
 }
 
 function blink(obj){
-	var blink_time = 500
 	var timer = setInterval(function(){
 			$(obj).parents(".name").find("input[type=text]").toggleClass("bg-danger text-white");
 	},blink_time);
@@ -179,7 +222,6 @@ function updateNumComps(newNum){
 	var curNum = $(".settings-option").length;
 	for (curNum = $(".settings-option").length; curNum < num+1; curNum = $(".settings-option").length) {
 		$("#selectCompany").append("<option class='settings-option' value='"+(curNum)+"'>Tab "+curNum+"</option>");
-		p(curNum);
 		if(companies[curNum-1]){
 			name = companies[curNum-1];
 		}else{
@@ -206,6 +248,54 @@ function showCompNameBox(selection){
 	}
 }
 
-function settingsTabs(){
-	
+function settingsTabs(num){
+	for(var i = 0; i < num; i++){
+		name = companies[i].replace(" ", "");
+		$("#myTabs").append("<li class='nav-item'><a class='nav-link' id='"+name+"-tab' data-toggle='tab' href='#"+name+"-tab-cont' role='tab' aria-controls='"+name+"-tab-cont' aria-selected='false'>"+companies[i]+"</a></li>");
+
+		clone = $(".company-tab").last().clone(true);
+		clone.attr("aria-labelledby", name+"-tab-cont");
+		clone.attr("id",name+"-tab-cont");
+		$(clone.find("label")[0]).attr("for",name+"-pic");
+		$(clone.find("input")[0]).val(pictures[name]).attr("name",name+"-pic");
+
+
+		$(clone.find("label")[1]).attr("for",name+"-color");
+		color = "#efebda";
+		if(colors[name])
+			color = colors[name];
+		$(clone.find("input")[1]).attr("name",name+"-color").val(color);
+
+		$("#settings-form").append(clone);
+	}
 }
+
+function resetTimer(obj){
+	$(obj).parents(".name").find(".date").val(new Date());
+}
+
+function storeTime(obj){
+	var time = Math.abs((new Date() - new Date($(obj).parents(".name").find(".date").val()))/1000);
+	var comp = $(obj).parents(".company").attr("id");
+	if(!times[comp])
+		times[comp] = [];
+	times[comp].push(time);
+
+	var average = getMean(times[comp]);
+	var sd = getSD(times[comp]);
+	$("#"+comp+"-tab-cont").find(".average-time").text(average.toClock());
+	$("#"+comp+"-tab-cont").find(".sd-time").text(sd.toClock());
+}
+
+let getMean = function (data) {
+    return data.reduce(function (a, b) {
+        return Number(a) + Number(b);
+    }) / data.length;
+};
+
+let getSD = function (data) {
+    let m = getMean(data);
+    return Math.sqrt(data.reduce(function (sq, n) {
+            return sq + Math.pow(n - m, 2);
+        }, 0) / (data.length - 1));
+};
