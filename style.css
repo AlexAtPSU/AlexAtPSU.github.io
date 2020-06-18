@@ -79,8 +79,8 @@ h1{
 	height: 20vh;
 	max-height: 100px;
 	padding: 0px;
-	font-size: calc(1.4vh + 1vw);
-	line-height: calc(4.7vh + 0.2vw);
+	font-size: calc(2vh + 16px);
+	line-height: calc(4vh + 10px);
 	overflow-y: hidden;
 	hyphens: auto;
 }
@@ -113,7 +113,6 @@ form.customer > div{
 	transition: all 0.2s;
 	/*box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);*/
 	margin: 0 5px 0 0px;
-
 	background: #efebda;
 	/*background: linear-gradient(to top left, #FFF, #efebda);*/
 }
