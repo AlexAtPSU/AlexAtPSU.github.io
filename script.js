@@ -15,7 +15,8 @@ $(function(){
 	$('form.customer').submit(function(e){
 		e.preventDefault();
 		var data = formToDict(this);
-		newCustomer($(this).parents(".company").attr("id"),data["customer"]);
+		if(data["customer"])
+			newCustomer($(this).parents(".company").attr("id"),data["customer"]);
 		$(this).find("input[type=text").val("");
 	});
 
@@ -126,7 +127,6 @@ function companyCards(num){
 			company.find("img").attr("src", pictures[nameNoSpace]);
 		if(colors[nameNoSpace])
 			company.css("background",colors[nameNoSpace]);
-		company.find("input").css("background",colors[nameNoSpace]);
 		company.appendTo(".companies");
 	}
 }
@@ -141,7 +141,7 @@ function newCustomer(comp, cust, date){
 		cust = cust[0] + cust.substring(1).toLowerCase();
 	var box = $(".name").last().clone(true);
 	box.find(".date").val(date);
-	box.find("input[type=text]").css("background",colors[comp]).val(cust);
+	box.find("input[type=text]").val(cust);
 
 	box.find(".jump-column").each(function(){
 		if ($(this).text().replace(" ", "") == comp) {
@@ -190,10 +190,10 @@ function deleteCust(obj, dontsave){
 }
 
 function deleteColumn(obj){
-	list = $(obj).parents(".company").find(".name");
-	for(var i = 0; i < list.length; i++){
-		list[i].remove();
-	}
+	$(obj).parents(".company").find(".name").each(function(){
+		storeTime($(this).find("input[type=text]"));
+		$(this).remove();
+	});
 
 }
 
