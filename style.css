@@ -1,3 +1,15 @@
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+
+  @return $value;
+}
+
 body{
 	overflow-x: hidden;
 	font-family: "SuisseIntl Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -50,6 +62,13 @@ h1{
 	padding: 0;
 	padding-top: 1%;
 	overflow: auto;
+	max-height: 100%;
+	font-size: 1.5vh;
+	overflow-wrap: break-word;
+}
+.side-bar > *{
+	line-height: 3.5vh;
+	font-size: 3.5vh;
 }
 
 .box{
@@ -60,9 +79,9 @@ h1{
 	height: 20vh;
 	max-height: 100px;
 	padding: 0px;
-	font-size: 3vh;
-	line-height: 5vh;
-	overflow-wrap: anywhere;
+	font-size: calc(1.4vh + 1vw);
+	line-height: calc(4.7vh + 0.2vw);
+	overflow-y: hidden;
 	hyphens: auto;
 }
 
@@ -81,7 +100,7 @@ h1{
 }
 
 form.customer > div{
-	margin:10px 0 10px 0;
+	margin:10px 0 10px -8px;
 	position: absolute;
     bottom: 0;
     width: 95%;
@@ -108,7 +127,7 @@ form.customer > div{
 .btn-modal{
 	position: absolute;
 	bottom: 15px;
-	left: 15px;
+	right: 15px;
 }
 
 #settings-form{
