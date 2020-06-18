@@ -46,6 +46,8 @@ h1{
 
 .side-bar{
 	max-width: 10vw;
+	padding: 0;
+	padding-top: 1%;
 }
 
 .box{

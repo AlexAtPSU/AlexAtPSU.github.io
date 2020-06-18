@@ -23,6 +23,8 @@ $(function(){
 		e.preventDefault();
 		var data = formToDict(this);
 		saveCookies(data);
+		if(confirm('To apply changes,\n the page will now reload.'))
+			window.location.reload();
 	});
 
 	$(".name > input[type=text]").on("keydown", function(e) {
@@ -140,6 +142,13 @@ function newCustomer(comp, cust, date){
 	var box = $(".name").last().clone(true);
 	box.find(".date").val(date);
 	box.find("input[type=text]").css("background",colors[comp]).val(cust);
+
+	box.find(".jump-column").each(function(){
+		if ($(this).text().replace(" ", "") == comp) {
+			$(this).addClass("d-none");
+		}
+	});
+
 	box.find('button').css("display", "none");
 	box.css("display", "none").css("bottom","-100px");
 	box.appendTo("#"+comp+" > .names");
@@ -292,18 +301,17 @@ function storeTime(obj){
 
 function loadJumps(num){
 	for(var i = 0; i < num; i++){
-		$(".jumpColumn").last().append("<a class='dropdown-item jump-column' href='#' onclick='jumpToColumn(this,"+companies[i]+")'>"+companies[i]+"</a>");
+		$(".jumpColumn").last().append("<a class='dropdown-item jump-column' href='#' onclick='jumpToColumn(this,"+i+")'>"+companies[i]+"</a>");
 	}
 }
 
-function jumpToColumn(obj, comp){
-	p(comp);
-	$(comp).find(".names").append($(obj).parents(".name"));
+function jumpToColumn(obj, num){
+	$("#"+companies[num].replace(" ","")).find(".names").append($(obj).parents(".name"));
 	$(obj).parents(".dropdown-menu").find(".jump-column").each(function(){
-		if ($(this).text().replace(" ","") == $(comp).attr("id")) {
+		if ($(this).text() == companies[num]) {
 			$(this).addClass("d-none");
 		}else{
-			$(this.removeClass("d-none"));
+			$(this).removeClass("d-none");
 		}
 	});
 }
