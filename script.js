@@ -66,21 +66,23 @@ $(function(){
 function loadCookies(){
 	var sett = Cookies.get();
 	var num = sett["num"];
-	if(!sett["num"])
+	if(!sett["num"]){
 		num = 0;
+	}
 
 	for(var i = 1; i <= num; i++){
-		companies.push(sett["comp"+i]);
+		if(sett["comp"+i])
+			companies.push(sett["comp"+i]);
 	}
-	var checker = true;
-	while(num == 0 || num != companies.length){
-		if (checker){
-			num++;
-			checker = false;
-		}else{
-			companies.push("DTF");
-			checker = true;
-		}
+
+	if(num != companies.length){
+		num = 0;
+		alert("Error loading companies.\nPlease re-enter the names.");
+	}
+
+	if(num == 0){
+		num = 1;
+		companies.push("DTF");
 	}
 
 	var keys = Object.keys(sett);
