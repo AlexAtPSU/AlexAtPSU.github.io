@@ -75,17 +75,13 @@ function loadCookies(){
 			companies.push(sett["comp"+i]);
 	}
 
-	if(num != companies.length){
-		num = 0;
-		Cookies.set("num",0,{expires:365});
-		alert("Error loading companies.\nPlease re-enter the names.");
-	}
-
 	if(num == 0){
 		num = 1;
-		companies.push("DTF");
 	}
 
+	while(num > companies.length){
+		companies.push("DTF");
+	}
 	var keys = Object.keys(sett);
 	for(var i = 0; i < keys.length; i++){
 		if(keys[i].search("-color") > 0)
