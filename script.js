@@ -107,7 +107,7 @@ function loadCookies(){
 
 function saveCookies(settings){
 	$.each( settings, function( key, value ) {
-		Cookies.set(key, value);
+		Cookies.set(key, value,{expires: 365});
 	});
 	p(Cookies.get());
 }
