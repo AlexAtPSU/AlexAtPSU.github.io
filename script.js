@@ -76,12 +76,13 @@ function loadCookies(){
 	}
 
 	if(num == 0){
+		companies.push("DTF");
 		num = 1;
 	}
-
-	while(num > companies.length){
-		companies.push("DTF");
+	if(num > companies.length){
+		num = companies.length;	
 	}
+
 	var keys = Object.keys(sett);
 	for(var i = 0; i < keys.length; i++){
 		if(keys[i].search("-color") > 0)
