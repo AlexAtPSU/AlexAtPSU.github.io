@@ -72,8 +72,8 @@ function loadCookies(){
 	for(var i = 1; i <= num; i++){
 		companies.push(sett["comp"+i]);
 	}
-	if(num == 0){
-		num = 1;
+	while(num == 0 || num != companies.length){
+		num++;
 		companies.push("DTF");
 	}
 
