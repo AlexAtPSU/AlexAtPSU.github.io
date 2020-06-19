@@ -77,6 +77,7 @@ function loadCookies(){
 
 	if(num != companies.length){
 		num = 0;
+		Cookies.set("num",0,{expires:365});
 		alert("Error loading companies.\nPlease re-enter the names.");
 	}
 
