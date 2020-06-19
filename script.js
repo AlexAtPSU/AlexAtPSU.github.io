@@ -75,12 +75,15 @@ function loadCookies(){
 			companies.push(sett["comp"+i]);
 	}
 
-	if(num == 0){
-		companies.push("DTF");
-		num = 1;
-	}
 	if(num > companies.length){
 		num = companies.length;	
+	}
+
+	if(num < 1){
+		num = 1;
+	}
+	if(companies.length < 1){
+		companies.push("DTF");
 	}
 
 	var keys = Object.keys(sett);
