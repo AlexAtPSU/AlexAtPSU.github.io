@@ -72,9 +72,15 @@ function loadCookies(){
 	for(var i = 1; i <= num; i++){
 		companies.push(sett["comp"+i]);
 	}
+	var checker = true;
 	while(num == 0 || num != companies.length){
-		num++;
-		companies.push("DTF");
+		if (checker){
+			num++;
+			checker = false;
+		}else{
+			companies.push("DTF");
+			checker = true;
+		}
 	}
 
 	var keys = Object.keys(sett);
