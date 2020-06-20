@@ -49,6 +49,38 @@ $(function(){
 	            	$(this).parents(".company").find(".customer > div > input[type=text]").focus();
 	            }
 	        }
+	        if (e.keyCode == 39) { // right
+	        	var pos;
+	            var cur = companies.indexOf($(this).parents(".company").attr("id"));
+	            if(cur == companies.length -1)
+	            	cur = -1;
+	            var names = $("#"+companies[cur+1]).find(".name > input[type=text]");
+	            if(names.length > 0){
+	            	pos = list.index(this);
+	            	while(names.length-1 < pos){
+	            		pos--;
+	            	}
+	            	$(names[pos]).focus();
+	            }else{
+	            	$("#"+companies[cur+1]).find(".customer > div > input[type=text]").focus();
+	            }
+	        }
+	        if (e.keyCode == 37) { // left
+	        	var pos;
+	            var cur = companies.indexOf($(this).parents(".company").attr("id"));
+	            if(cur == 0)
+	            	cur = companies.length;
+	            var names = $("#"+companies[cur-1]).find(".name > input[type=text]");
+	            if(names.length > 0){
+	            	pos = list.index(this);
+	            	while(names.length-1 < pos){
+	            		pos--;
+	            	}
+	            	$(names[pos]).focus();
+	            }else{
+	            	$("#"+companies[cur-1]).find(".customer > div > input[type=text]").focus();
+	            }
+	        }
 	    }
     });
     $(".customer > div > input[type=text]").on("keydown", function(e) {
@@ -58,6 +90,18 @@ $(function(){
 	            if(list.length > 0){
 	            	list[list.length -1].focus();
 	            }
+	        }
+	        if (e.keyCode == 39) { // right
+	            var cur = companies.indexOf($(this).parents(".company").attr("id"));
+	            if(cur == companies.length -1)
+	            	cur = -1;
+	            $("#"+companies[cur+1]).find(".customer > div > input[type=text]").focus();
+	        }
+	        if (e.keyCode == 37) { // left
+	            var cur = companies.indexOf($(this).parents(".company").attr("id"));
+	            if(cur == 0)
+	            	cur = companies.length;
+	            $("#"+companies[cur-1]).find(".customer > div > input[type=text]").focus();
 	        }
 	    }
     });
